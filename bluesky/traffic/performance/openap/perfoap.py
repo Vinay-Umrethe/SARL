@@ -231,26 +231,6 @@ class OpenAP(PerfBase):
             2D-array: limitations [spd_min, spd_max, atl_min,
                 alt_max, roc_min, roc_max]
         """
-<<<<<<< HEAD
-=======
-        n = len(actypes)
-        vmin = np.zeros(n)
-        vmax = np.zeros(n)
-
-        ifw = np.where(self.lifttype == coeff.LIFT_FIXWING)[0]
-        vminfw = np.zeros(len(ifw))
-        vmaxfw = np.zeros(len(ifw))
-
-        # fixwing
-        # obtain flight envelope for speed, roc, and alt, based on flight phase
-        vminfw = np.where(phases[ifw] == ph.NA, 0, vminfw)
-        vminfw = np.where(phases[ifw] == ph.IC, self.vminic[ifw], vminfw)
-        vminfw = np.where(
-            (phases[ifw] >= ph.CL) | (phases[ifw] <= ph.DE), self.vminer[ifw], vminfw
-        )
-        vminfw = np.where(phases[ifw] == ph.AP, self.vminap[ifw], vminfw)
-        vminfw = np.where(phases[ifw] == ph.GD, 0, vminfw)
->>>>>>> 0e26ca3fb6ff0a608117e16118273b3d309ebfc1
 
         nrow = len(actypes)
         ncol = 7
@@ -308,8 +288,7 @@ class OpenAP(PerfBase):
         accs[self.phase!=ph.GD] = acc_air
 
         return accs
-<<<<<<< HEAD
-=======
+
 
     def show_performance(self, acid):
         bs.scr.echo("Flight phase: %s" % ph.readable_phase(self.phase[acid]))
@@ -323,4 +302,3 @@ class OpenAP(PerfBase):
         )
         bs.scr.echo("Ceiling: %d km" % (self.hmax[acid] / 1000))
         # self.drag.astype(int)
->>>>>>> 0e26ca3fb6ff0a608117e16118273b3d309ebfc1

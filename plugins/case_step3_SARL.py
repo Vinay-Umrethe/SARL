@@ -150,8 +150,8 @@ class ACREnvironmentController:
 
     def reset(self):
         self.episode_count += 1
-        if self.episode_count == 1000:
-            stack.stack("STOP")
+        if self.episode_count == 5:
+            stack.stack("QUIT")
         self.step_count = 0
         self.num_ac_generated_total = 0
         self.win_count = 0
